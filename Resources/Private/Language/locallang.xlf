@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-04-17T16:06:02Z" product-name="alm_iconpicker">
+		<header/>
+		<body>
+			<trans-unit id="tx_almiconpicker.title">
+				<source>AlmIconPicker</source>
+			</trans-unit>
+			<trans-unit id="tx_almiconpicker.save">
+				<source>Save</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

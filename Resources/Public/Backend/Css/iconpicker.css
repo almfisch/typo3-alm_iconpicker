@@ -1,0 +1,17 @@
+.icon_picker_wrapper
+{
+	padding: 10px 30px 10px 30px;
+}
+.icon_picker_head
+{
+	padding: 0px 0px 15px 0px;
+	border-bottom: solid 1px #cccccc;
+}
+.icon_picker_main
+{
+	padding: 15px 0px 0px 0px;
+}
+select.icon-category-select
+{
+	font-family: HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif
+}
