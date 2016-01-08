@@ -18,7 +18,7 @@ TCA Example:
                         	'name' => 'wizard_iconpicker',
                         ),
                         'icon' => 'EXT:alm_iconpicker/Resources/Public/Icons/wizard.gif',
-                        'JSopenParams' => 'height=720,width=430,status=0,menubar=0,scrollbars=0',
+                        'JSopenParams' => 'height=750,width=430,status=0,menubar=0,scrollbars=0',
                         'params' => array(
                         	'font_1' => array(
                         		'iconFontName' => 'Font Awesome',
@@ -33,6 +33,10 @@ TCA Example:
                         )
 					)
                 )
+                
+Path to icon font can be 'EXT, for example:
+'iconFont' => 'EXT:provider_extension/Resources/Public/Fonts/font_awesome/css/font-awesome.min.css',
+'iconList' => 'EXT:provider_extension/Resources/Public/Fonts/font_awesome/iconlist.txt'
 
 ################################################################################################################
 
@@ -48,7 +52,7 @@ Flexform Example:
 				<name>wizard_iconpicker</name>
 			</module>
 			<icon>EXT:alm_iconpicker/Resources/Public/Icons/wizard.gif</icon>
-			<JSopenParams>height=720,width=430,status=0,menubar=0,scrollbars=0</JSopenParams>
+			<JSopenParams>height=750,width=430,status=0,menubar=0,scrollbars=0</JSopenParams>
 			<params>
 				<font_1>
 					<iconFontName>Font Awesome</iconFontName>
@@ -63,6 +67,10 @@ Flexform Example:
 			</params>
 		</iconPicker>
 	</wizards>
+	
+Path to icon font can be 'EXT, for example:
+'iconFont' => 'EXT:provider_extension/Resources/Public/Fonts/font_awesome/css/font-awesome.min.css',
+'iconList' => 'EXT:provider_extension/Resources/Public/Fonts/font_awesome/iconlist.txt'
 
 ################################################################################################################
 

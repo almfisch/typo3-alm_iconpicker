@@ -1,6 +1,6 @@
 .icon_picker_wrapper
 {
-	padding: 10px 30px 10px 30px;
+	padding: 0px 0px 0px 0px;
 }
 .icon_picker_head
 {
@@ -9,7 +9,7 @@
 }
 .icon_picker_main
 {
-	padding: 15px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
 }
 select.icon-category-select
 {
