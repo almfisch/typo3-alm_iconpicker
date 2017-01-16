@@ -93,6 +93,7 @@ class IconpickerController extends AbstractModule
 				if(parent.opener && parent.opener.document && parent.opener.document.' . $this->formName . ' && parent.opener.document.' . $this->formName . '[\'' . $this->fieldName . '\'])
 				{
 					parent.opener.document.' . $this->formName . '[\'' . $this->fieldName . '\'].value = data;
+					parent.opener.TYPO3.jQuery(\'[data-formengine-input-name="' . $this->fieldName . '"]\').val(data);
 					parent.opener.' . $this->changeFunc . '
 				}
 			}
