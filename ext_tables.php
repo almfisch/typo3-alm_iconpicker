@@ -7,12 +7,12 @@ if(!defined('TYPO3_MODE'))
 if('BE' === TYPO3_MODE)
 {
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-		'Alm.alm_iconpicker',
+		'AlmIconpicker',
 		'tools',
 		'iconpickerModule',
 		'',
 		array(
-			'IconpickerModule' => 'index',
+			\Alm\AlmIconpicker\Controller\IconpickerModuleController::class => 'index',
 		),
 		array(
 			'access' => 'user,group',

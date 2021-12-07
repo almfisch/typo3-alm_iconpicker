@@ -15,6 +15,11 @@ select.icon-category-select
 {
 	font-family: HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif
 }
+.icon_picker_save
+{
+	margin: 15px 0px 0px 0px;
+}
+
 
 /* Only Temporary */
 #icon_code
