@@ -1,6 +1,27 @@
 <?php
 namespace Alm\AlmIconpicker\Controller\Wizard;
 
+use TYPO3\CMS\Backend\Form\AbstractNode;
+
+class IconpickerController extends AbstractNode
+{
+	public function render()
+	{
+		$result = [
+			'iconIdentifier' => 'icon-picker',
+			'title' => 'IconPicker',
+			'linkAttributes' => [
+			   'class' => 'btn btn-default',
+			   'href' => 'javascript:alert("xxx")',	],
+			//'requireJsModules' => ['TYPO3/CMS/Something/ImportData'],
+		 ];
+		 return $result;
+	}
+}
+
+
+
+/*
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Module\AbstractModule;
@@ -57,18 +78,18 @@ class IconpickerController extends AbstractModule
 		$this->pageRenderer->disableConcatenateCss();
 		$this->pageRenderer->disableConcatenateJavascript();
 
-		$this->pageRenderer->addCssFile($GLOBALS['BACK_PATH'] . ExtensionManagementUtility::extRelPath('alm_iconpicker') . 'Resources/Public/Backend/fontIconPicker/css/jquery.fonticonpicker.min.css');
-		$this->pageRenderer->addCssFile($GLOBALS['BACK_PATH'] . ExtensionManagementUtility::extRelPath('alm_iconpicker') . 'Resources/Public/Backend/fontIconPicker/themes/grey-theme/jquery.fonticonpicker.grey.min.css');
+		$this->pageRenderer->addCssFile($GLOBALS['BACK_PATH'] . ExtensionManagementUtility::siteRelPath('alm_iconpicker') . 'Resources/Public/Backend/fontIconPicker/css/jquery.fonticonpicker.min.css');
+		$this->pageRenderer->addCssFile($GLOBALS['BACK_PATH'] . ExtensionManagementUtility::siteRelPath('alm_iconpicker') . 'Resources/Public/Backend/fontIconPicker/themes/grey-theme/jquery.fonticonpicker.grey.min.css');
 		foreach($this->params as $font)
 		{
 			$tmpPath = GeneralUtility::getFileAbsFileName($font['iconFont']);
 			$tmpPath = PathUtility::getAbsoluteWebPath($tmpPath);
 			$this->pageRenderer->addCssFile($tmpPath, 'stylesheet');
 		}
-		$this->pageRenderer->addCssFile($GLOBALS['BACK_PATH'] . ExtensionManagementUtility::extRelPath('alm_iconpicker') . 'Resources/Public/Backend/Css/iconpicker.css');
+		$this->pageRenderer->addCssFile($GLOBALS['BACK_PATH'] . ExtensionManagementUtility::siteRelPath('alm_iconpicker') . 'Resources/Public/Backend/Css/iconpicker.css');
 
-		$this->pageRenderer->addJsFile($GLOBALS['BACK_PATH'] . ExtensionManagementUtility::extRelPath('alm_iconpicker') . 'Resources/Public/Backend/JavaScript/jquery.js');
-		$this->pageRenderer->addJsFile($GLOBALS['BACK_PATH'] . ExtensionManagementUtility::extRelPath('alm_iconpicker') . 'Resources/Public/Backend/fontIconPicker/jquery.fonticonpicker.min.js');
+		$this->pageRenderer->addJsFile($GLOBALS['BACK_PATH'] . ExtensionManagementUtility::siteRelPath('alm_iconpicker') . 'Resources/Public/Backend/JavaScript/jquery.js');
+		$this->pageRenderer->addJsFile($GLOBALS['BACK_PATH'] . ExtensionManagementUtility::siteRelPath('alm_iconpicker') . 'Resources/Public/Backend/fontIconPicker/jquery.fonticonpicker.min.js');
 
 		$this->pageRenderer->addJsInlineCode('iconPicker', '
 			tQuery = jQuery.noConflict();
@@ -168,3 +189,4 @@ class IconpickerController extends AbstractModule
 		$this->content = $content;
 	}
 }
+*/
