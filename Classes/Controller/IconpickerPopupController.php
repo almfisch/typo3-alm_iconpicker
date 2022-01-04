@@ -1,6 +1,7 @@
 <?php
 namespace Alm\AlmIconpicker\Controller;
 
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Core\Http\HtmlResponse;
@@ -15,30 +16,25 @@ class IconpickerPopupController
     /** @var ModuleTemplate */
     protected $moduleTemplate;
 
-    /** @var ViewInterface */
-    protected $view;
-
-
     /**
      * Return simple dummy content
      *
+     * @param ServerRequestInterface $request the current request
      * @return ResponseInterface the response with the content
      */
-    public function mainAction(): ResponseInterface
+    public function mainAction(ServerRequestInterface $request): ResponseInterface
     {
-        $linkParameter = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET('P');
+        $linkParameter = $request->getQueryParams()['P'];
 
         $this->moduleTemplate = GeneralUtility::makeInstance(ModuleTemplate::class);
         $this->moduleTemplate->setTitle('IconPicker');
         $this->moduleTemplate->getDocHeaderComponent()->disable();
 
-
-        $this->view = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Fluid\View\StandaloneView::class);
-        $this->view->setLayoutRootPaths([\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:alm_iconpicker/Resources/Private/Layouts')]);
-        $this->view->setTemplateRootPaths([\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:alm_iconpicker/Resources/Private/Templates')]);
-        $this->view->setPartialRootPaths([\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:alm_iconpicker/Resources/Private/Partials')]);
-        $this->view->setTemplatePathAndFilename(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:alm_iconpicker/Resources/Private/Templates/IconpickerModule/Popup.html'));
-
+        $view = $this->moduleTemplate->getView();
+        $view->setLayoutRootPaths([\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:alm_iconpicker/Resources/Private/Layouts')]);
+        $view->setTemplateRootPaths([\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:alm_iconpicker/Resources/Private/Templates')]);
+        $view->setPartialRootPaths([\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:alm_iconpicker/Resources/Private/Partials')]);
+        $view->setTemplatePathAndFilename(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:alm_iconpicker/Resources/Private/Templates/IconpickerModule/Popup.html'));
 
         $params = $GLOBALS['TCA']['tt_content']['columns']['tx_almiconfields_icon']['config']['wizards']['iconPicker']['params'];
 
@@ -67,17 +63,13 @@ class IconpickerPopupController
 		$jsArr[] = \TYPO3\CMS\Core\Utility\PathUtility::getAbsoluteWebPath(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:alm_iconpicker/Resources/Public/Backend/fontIconPicker/jquery.fonticonpicker.min.js'));
 		$jsArr[] = \TYPO3\CMS\Core\Utility\PathUtility::getAbsoluteWebPath(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:alm_iconpicker/Resources/Public/Backend/JavaScript/IconPicker.js'));
 
-		$this->view->assign('cssArr', $cssArr);
-		$this->view->assign('jsArr', $jsArr);
-        $this->view->assign('iconList', $iconList);
-        $this->view->assign('linkParameter', $linkParameter);
-        
-        $pageContent = $this->view->render();
-        $content .= $pageContent;
-        $this->moduleTemplate->setContent($content);
+		$view->assign('cssArr', $cssArr);
+		$view->assign('jsArr', $jsArr);
+        $view->assign('iconList', $iconList);
+        $view->assign('linkParameter', $linkParameter);
 
         //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($linkParameter);
         
-        return new HtmlResponse($this->moduleTemplate->renderContent());
+        return new HtmlResponse($view->render());
     }
 }
