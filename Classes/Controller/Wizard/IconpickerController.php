@@ -31,25 +31,31 @@ class IconpickerController extends AbstractNode
 		$id = \TYPO3\CMS\Core\Utility\StringUtility::getUniqueId('t3js-formengine-fieldcontrol-');
 
 		$result = [
-			'iconIdentifier' => 'icon-picker',
+			'iconIdentifier' => 'module_alm_iconpicker_popup',
 			'title' => 'IconPicker',
 			'linkAttributes' => [
-				'class' => 'btn btn-default',
+				'class' => 'btn btn-default t3js-element-browser',
 				'id' => htmlspecialchars($id),
 				//'href' => 'javascript:alert("xxx")',
 				'href' => $url,
 				'data-item-name' => htmlspecialchars($itemName),
 			],
+			/*
 			'requireJsModules' => [
 				['TYPO3/CMS/AlmIconpicker/IconPickerPopup' => 'function(LinkPopup) {new LinkPopup(' . \TYPO3\CMS\Core\Utility\GeneralUtility::quoteJSvalue('#' . $id) . ');}'],
             ],
+			*/
+			/*
+			'requireJsModules' => [
+				[\TYPO3\CMS\Core\Page\JavaScriptModuleInstruction::forRequireJS('TYPO3/CMS/AlmIconpicker/IconPickerPopup')->instance('#' . $id)]
+            ],
+			*/
+			//'requireJsModules' => [],
 		];
-
 
 		//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($urlParameters);
 		//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($url);
 		//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($url);
-
 
 		return $result;
 	}

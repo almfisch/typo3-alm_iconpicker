@@ -1,17 +1,25 @@
-{namespace h=Alm\AlmIconpicker\ViewHelpers}
-
-<f:be.container
-	includeCssFiles="{cssArr}"
-	includeJsFiles="{jsArr}"
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+    data-namespace-typo3-fluid="true"
 >
-	<h1><img src="{f:uri.resource(path:'Icons/alm_iconpicker.png')}" class="img-rounded" height="64" width="64"> {f:translate(key: 'mod.header')} <small>({f:translate(key: 'mod.subheader')})</small></h1>
+	<f:layout name="Module" />
 
-	<div class="icon_picker_wrapper">
-		<div class="icon_picker_main">
-			<input type="text" id="icon_element" name="icon_element" data-iconlist="{iconList}" />
-			<div>
-				<div id="icon_code">select icon and copy the code from here</div>
+	<f:section name="Content">
+		<f:be.pageRenderer
+			includeCssFiles="{cssArr}"
+			includeJsFiles="{jsArr}"
+		/>
+		<h1><img src="{f:uri.resource(path:'Icons/alm_iconpicker.png')}" class="img-rounded" height="64" width="64"> {f:translate(key: 'mod.header')} <small>({f:translate(key: 'mod.subheader')})</small></h1>
+
+		<div class="icon_picker_wrapper">
+			<div class="icon_picker_main">
+				<input type="text" id="icon_element" name="icon_element" data-iconlist="{iconList}" />
+				<div>
+					<div id="icon_code">select icon and copy the code from here</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</f:be.container>
+	</f:section>
+
+</html>

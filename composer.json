@@ -1,0 +1,13 @@
+{
+    "name": "alm/alm-iconpicker",
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "alm_iconpicker"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Alm\\AlmIconpicker\\": "Classes/"
+        }
+    }
+}

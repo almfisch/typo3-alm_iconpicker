@@ -3,6 +3,10 @@ namespace Alm\AlmIconpicker\Controller;
 
 class IconpickerModuleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
+	public function __construct(
+        protected readonly \TYPO3\CMS\Backend\Template\ModuleTemplateFactory $moduleTemplateFactory,
+    ) {}
+	
 	/**
      * Index Action
      *
@@ -37,10 +41,11 @@ class IconpickerModuleController extends \TYPO3\CMS\Extbase\Mvc\Controller\Actio
 		$jsArr[] = \TYPO3\CMS\Core\Utility\PathUtility::getAbsoluteWebPath(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:alm_iconpicker/Resources/Public/Backend/fontIconPicker/jquery.fonticonpicker.min.js'));
 		$jsArr[] = \TYPO3\CMS\Core\Utility\PathUtility::getAbsoluteWebPath(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:alm_iconpicker/Resources/Public/Backend/JavaScript/IconPicker.js'));
 
-		$this->view->assign('cssArr', $cssArr);
-		$this->view->assign('jsArr', $jsArr);
-		$this->view->assign('iconList', $iconList);
-
-		//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($cssArr);
+		$moduleTemplate = $this->moduleTemplateFactory->create($this->request);
+		$moduleTemplate->assign('cssArr', $cssArr);
+		$moduleTemplate->assign('jsArr', $jsArr);
+		$moduleTemplate->assign('iconList', $iconList);
+		
+		return $moduleTemplate->renderResponse('Index');
     }
 }
