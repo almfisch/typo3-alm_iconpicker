@@ -16,7 +16,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'category' => 'module',
 	'author' => 'Andi Platen',
 	'author_email' => 'info@wireframe.de',
-	'state' => 'beta',
+	'state' => 'stable',
 	'internal' => '',
 	'uploadfolder' => '0',
 	'createDirs' => '',
@@ -24,7 +24,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'version' => '0.4.0',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '7.6.0-12.4.99',
+			'typo3' => '7.6.0-13.4.99',
 		),
 		'conflicts' => array(
 		),

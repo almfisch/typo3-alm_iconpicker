@@ -5,8 +5,10 @@ use TYPO3\CMS\Backend\Form\AbstractNode;
 
 class IconpickerController extends AbstractNode
 {
-	public function render()
+	public function render(): array
 	{
+		$hashService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Crypto\HashService\HashService::class);
+
 		$options = $this->data['renderData']['fieldControlOptions'];
 		$parameterArray = $this->data['parameterArray'];
 		$itemName = $parameterArray['itemFormElName'];
@@ -19,9 +21,9 @@ class IconpickerController extends AbstractNode
                 'field' => $this->data['fieldName'],
                 'formName' => 'editform',
                 'itemName' => $itemName,
-                'hmac' => \TYPO3\CMS\Core\Utility\GeneralUtility::hmac('editform' . $itemName, 'wizard_js'),
+                'hmac' => $hashService->hmac('editform' . $itemName, 'wizard_js'),
                 'fieldChangeFunc' => $parameterArray['fieldChangeFunc'],
-                'fieldChangeFuncHash' => \TYPO3\CMS\Core\Utility\GeneralUtility::hmac(serialize($parameterArray['fieldChangeFunc']), 'backend-link-browser'),
+                'fieldChangeFuncHash' => $hashService->hmac(serialize($parameterArray['fieldChangeFunc']), 'backend-link-browser'),
 			],
 		];
 		
