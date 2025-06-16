@@ -7,7 +7,7 @@ class IconpickerController extends AbstractNode
 {
 	public function render(): array
 	{
-		$hashService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Crypto\HashService\HashService::class);
+		$hashService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Crypto\HashService::class);
 
 		$options = $this->data['renderData']['fieldControlOptions'];
 		$parameterArray = $this->data['parameterArray'];
